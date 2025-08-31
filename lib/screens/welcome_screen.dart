@@ -20,9 +20,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           children: [
             Row(
               children: [
-                Container(
-                  //Adding logo
-                ),
+                Container(height: 60.0, child: Image.asset('images/logo.png')),
                 Text(
                   'Chat Knee',
                   style: TextStyle(fontSize: 45.0, fontWeight: FontWeight.w900),
