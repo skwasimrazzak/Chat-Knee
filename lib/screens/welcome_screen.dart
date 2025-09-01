@@ -23,7 +23,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           children: [
             Row(
               children: [
-                SizedBox(height: 60.0, child: Image.asset('images/logo.png')),
+                Hero(
+                  tag: 'logo',
+                  child: SizedBox(
+                    height: 60.0,
+                    child: Image.asset('images/logo.png'),
+                  ),
+                ),
                 Text(
                   'Chat Knee',
                   style: TextStyle(
@@ -37,33 +43,39 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             SizedBox(height: 48.0),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                elevation: 5.0,
-                color: Colors.lightBlueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                child: MaterialButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, LoginScreen.id);
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text('Log In'),
+              child: Hero(
+                tag: 'login_button',
+                child: Material(
+                  elevation: 5.0,
+                  color: Colors.lightBlueAccent,
+                  borderRadius: BorderRadius.circular(30.0),
+                  child: MaterialButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, LoginScreen.id);
+                    },
+                    minWidth: 200.0,
+                    height: 42.0,
+                    child: Text('Log In'),
+                  ),
                 ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                elevation: 5.0,
-                color: Colors.blueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                child: MaterialButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, SignupScreen.id);
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text('Sign Up'),
+              child: Hero(
+                tag: 'signup_button',
+                child: Material(
+                  elevation: 5.0,
+                  color: Colors.blueAccent,
+                  borderRadius: BorderRadius.circular(30.0),
+                  child: MaterialButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, SignupScreen.id);
+                    },
+                    minWidth: 200.0,
+                    height: 42.0,
+                    child: Text('Sign Up'),
+                  ),
                 ),
               ),
             ),

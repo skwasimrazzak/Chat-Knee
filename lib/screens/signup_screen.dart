@@ -19,7 +19,13 @@ class _SignupScreenState extends State<SignupScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(height: 200.0, child: Image.asset('images/logo.png')),
+            Hero(
+              tag: 'logo',
+              child: SizedBox(
+                height: 200.0,
+                child: Image.asset('images/logo.png'),
+              ),
+            ),
             SizedBox(height: 48.0),
             TextField(
               onChanged: (value) {
@@ -83,17 +89,20 @@ class _SignupScreenState extends State<SignupScreen> {
             SizedBox(height: 24.0),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                color: Colors.lightBlueAccent,
-                borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                elevation: 5.0,
-                child: MaterialButton(
-                  onPressed: () {
-                    //Action
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text('Sign Up'),
+              child: Hero(
+                tag: 'signup_button',
+                child: Material(
+                  color: Colors.lightBlueAccent,
+                  borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                  elevation: 5.0,
+                  child: MaterialButton(
+                    onPressed: () {
+                      //Action
+                    },
+                    minWidth: 200.0,
+                    height: 42.0,
+                    child: Text('Sign Up'),
+                  ),
                 ),
               ),
             ),
