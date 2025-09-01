@@ -20,10 +20,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           children: [
             Row(
               children: [
-                Container(height: 60.0, child: Image.asset('images/logo.png')),
+                SizedBox(height: 60.0, child: Image.asset('images/logo.png')),
                 Text(
                   'Chat Knee',
-                  style: TextStyle(fontSize: 45.0, fontWeight: FontWeight.w900),
+                  style: TextStyle(
+                    fontSize: 45.0,
+                    fontWeight: FontWeight.w900,
+                    color: Colors.black45,
+                  ),
                 ),
               ],
             ),
@@ -32,7 +36,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: Material(
                 elevation: 5.0,
-                color: Colors.blueGrey,
+                color: Colors.lightBlueAccent,
                 borderRadius: BorderRadius.circular(30.0),
                 child: MaterialButton(
                   onPressed: () {
@@ -48,7 +52,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: Material(
                 elevation: 5.0,
-                color: Colors.blueGrey,
+                color: Colors.blueAccent,
                 borderRadius: BorderRadius.circular(30.0),
                 child: MaterialButton(
                   onPressed: () {
