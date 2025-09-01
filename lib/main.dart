@@ -1,3 +1,6 @@
+import 'package:chat_knee/screens/chat_screen.dart';
+import 'package:chat_knee/screens/login_screen.dart';
+import 'package:chat_knee/screens/signup_screen.dart';
 import 'package:chat_knee/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -11,10 +14,17 @@ class ChatKnee extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: WelcomeScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => WelcomeScreen(),
+        '/login': (context) => LoginScreen(),
+        '/Signup': (context) => SignupScreen(),
+        '/Chat': (context) => ChatScreen(),
+      },
       theme: ThemeData.dark().copyWith(
         textTheme: TextTheme(bodyLarge: TextStyle(color: Colors.black45)),
       ),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
