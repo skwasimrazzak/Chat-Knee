@@ -1,6 +1,9 @@
+import 'package:chat_knee/screens/login_screen.dart';
+import 'package:chat_knee/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatefulWidget {
+  static const String id = 'welcome_screen';
   const WelcomeScreen({super.key});
 
   @override
@@ -40,7 +43,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 borderRadius: BorderRadius.circular(30.0),
                 child: MaterialButton(
                   onPressed: () {
-                    //Forwards to login screen
+                    Navigator.pushNamed(context, LoginScreen.id);
                   },
                   minWidth: 200.0,
                   height: 42.0,
@@ -56,7 +59,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 borderRadius: BorderRadius.circular(30.0),
                 child: MaterialButton(
                   onPressed: () {
-                    //Forwards to signup screen
+                    Navigator.pushNamed(context, SignupScreen.id);
                   },
                   minWidth: 200.0,
                   height: 42.0,

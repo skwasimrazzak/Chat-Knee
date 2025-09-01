@@ -14,12 +14,12 @@ class ChatKnee extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/',
+      initialRoute: WelcomeScreen.id,
       routes: {
-        '/': (context) => WelcomeScreen(),
-        '/login': (context) => LoginScreen(),
-        '/Signup': (context) => SignupScreen(),
-        '/Chat': (context) => ChatScreen(),
+        WelcomeScreen.id: (context) => WelcomeScreen(),
+        LoginScreen.id: (context) => LoginScreen(),
+        SignupScreen.id: (context) => SignupScreen(),
+        ChatScreen.id: (context) => ChatScreen(),
       },
       theme: ThemeData.dark().copyWith(
         textTheme: TextTheme(bodyLarge: TextStyle(color: Colors.black45)),

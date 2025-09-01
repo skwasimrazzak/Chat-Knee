@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SignupScreen extends StatefulWidget {
+  static const String id = 'signup_screen';
   const SignupScreen({super.key});
 
   @override
