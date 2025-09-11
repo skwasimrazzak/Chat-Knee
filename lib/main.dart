@@ -2,9 +2,14 @@ import 'package:chat_knee/screens/chat_screen.dart';
 import 'package:chat_knee/screens/login_screen.dart';
 import 'package:chat_knee/screens/signup_screen.dart';
 import 'package:chat_knee/screens/welcome_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp().whenComplete(() {
+    print('completed');
+  });
   runApp(ChatKnee());
 }
 
