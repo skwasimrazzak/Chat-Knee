@@ -1,4 +1,5 @@
 import 'package:chat_knee/constants.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,8 @@ class _ChatScreenState extends State<ChatScreen> {
     getCurrentUser();
   }
 
+  String? messageText;
+  final _firestore = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
   late User loggedInUser;
   getCurrentUser() {
@@ -66,14 +69,18 @@ class _ChatScreenState extends State<ChatScreen> {
                   Expanded(
                     child: TextField(
                       onChanged: (value) {
-                        //Input Value Action
+                        messageText = value;
                       },
                       decoration: kMessageTextFieldDecoration,
+                      style: TextStyle(color: Colors.white),
                     ),
                   ),
                   TextButton(
                     onPressed: () {
-                      //Send user input
+                      _firestore.collection('messages').add({
+                        'text': messageText,
+                        'sender': loggedInUser.email,
+                      });
                     },
                     child: Text('Send', style: kTextButtonStyle),
                   ),

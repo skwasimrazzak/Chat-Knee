@@ -7,6 +7,7 @@ const kMessageTextFieldDecoration = InputDecoration(
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
   hintText: 'Message',
   border: InputBorder.none,
+  labelStyle: TextStyle(color: Colors.white),
 );
 const kTextButtonStyle = TextStyle(
   color: Color(0xff26667F),
