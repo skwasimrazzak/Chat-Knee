@@ -95,7 +95,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   );
                 }
 
-                return Column(children: messageList);
+                return Expanded(child: ListView(children: messageList));
               },
             ),
             Container(
@@ -106,7 +106,13 @@ class _ChatScreenState extends State<ChatScreen> {
                   Expanded(
                     child: TextField(
                       onChanged: (value) {
-                        messageText = value;
+                        if (value != '') {
+                          print('1');
+                          messageText = value;
+                        } else {
+                          print('4');
+                          messageText = null;
+                        }
                       },
                       decoration: kMessageTextFieldDecoration,
                       style: TextStyle(color: Colors.white),
@@ -114,10 +120,15 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                   TextButton(
                     onPressed: () {
-                      _firestore.collection('messages').add({
-                        'text': messageText,
-                        'sender': loggedInUser.email,
-                      });
+                      if (messageText != null) {
+                        print('2');
+                        print('n${messageText}n');
+                        _firestore.collection('messages').add({
+                          'text': messageText,
+                          'sender': loggedInUser.email,
+                        });
+                        messageText = null;
+                      }
                     },
                     child: Text('Send', style: kTextButtonStyle),
                   ),
