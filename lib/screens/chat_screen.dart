@@ -31,26 +31,11 @@ class _ChatScreenState extends State<ChatScreen> {
       final user = _auth.currentUser;
       if (user != null) {
         loggedInUser = user;
-        print(loggedInUser.email);
       }
     } catch (e) {
       print(e);
     }
   }
-
-  // getMessages() async {
-  //   final messages = await _firestore.collection('messages').get();
-  //   for (var texts in messages.docs) {
-  //     print(texts.data());
-  //   }
-  // }
-  // getMessages() async {
-  //   await for (var snapshots in _firestore.collection('messages').snapshots()) {
-  //     for (var texts in snapshots.docs) {
-  //       print(texts.data());
-  //     }
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +45,6 @@ class _ChatScreenState extends State<ChatScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              // getMessages();
               _auth.signOut();
               Navigator.pop(context);
             },
@@ -91,10 +75,8 @@ class _ChatScreenState extends State<ChatScreen> {
                       controller: messageTextController,
                       onChanged: (value) {
                         if (value != '') {
-                          print('1');
                           messageText = value;
                         } else {
-                          print('4');
                           messageText = null;
                         }
                       },
@@ -105,8 +87,6 @@ class _ChatScreenState extends State<ChatScreen> {
                   TextButton(
                     onPressed: () {
                       if (messageText != null) {
-                        print('2');
-                        print('n${messageText}n');
                         _firestore.collection('messages').add({
                           'text': messageText,
                           'sender': loggedInUser.email,
@@ -149,7 +129,7 @@ class MessageStream extends StatelessWidget {
         for (var message in messages) {
           final messageTextView = message['text'];
           final senderNameView = message['sender'];
-          print(message['timestamp']);
+
           final messageBubble = MessageBubble(
             sender: senderNameView,
             message: messageTextView,
