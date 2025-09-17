@@ -41,13 +41,13 @@ class _ChatScreenState extends State<ChatScreen> {
   //     print(texts.data());
   //   }
   // }
-  getMessages() async {
-    await for (var snapshots in _firestore.collection('messages').snapshots()) {
-      for (var texts in snapshots.docs) {
-        print(texts.data());
-      }
-    }
-  }
+  // getMessages() async {
+  //   await for (var snapshots in _firestore.collection('messages').snapshots()) {
+  //     for (var texts in snapshots.docs) {
+  //       print(texts.data());
+  //     }
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -57,9 +57,9 @@ class _ChatScreenState extends State<ChatScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              getMessages();
-              // _auth.signOut();
-              // Navigator.pop(context);
+              // getMessages();
+              _auth.signOut();
+              Navigator.pop(context);
             },
             icon: Icon(Icons.close),
           ),
@@ -77,6 +77,27 @@ class _ChatScreenState extends State<ChatScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            StreamBuilder<QuerySnapshot>(
+              stream: _firestore.collection('messages').snapshots(),
+              builder: (context, snapshot) {
+                List<Widget> messageList = [];
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: CircularProgressIndicator(color: Colors.blueGrey),
+                  );
+                }
+                final messages = snapshot.data!.docs;
+                for (var message in messages) {
+                  final messageTextView = message['text'];
+                  final senderNameView = message['sender'];
+                  messageList.add(
+                    Text('$messageTextView from $senderNameView'),
+                  );
+                }
+
+                return Column(children: messageList);
+              },
+            ),
             Container(
               decoration: kMessageContainerDecoration,
               child: Row(
